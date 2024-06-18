@@ -7,9 +7,15 @@ import { UpdateUserDto } from './dto/update-user.dto';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Post()
-  create(@Body() createUserDto: CreateUserDto) {
-    return this.usersService.create(createUserDto);
+  @Post('login')
+  async login(@Body() body: any) {
+    const { username, password } = body;
+    return this.usersService.login(username, password)
+  }
+
+  @Post('register')
+  create(@Body() user: CreateUserDto) {
+    return this.usersService.create(user);
   }
 
   @Get()
@@ -23,8 +29,8 @@ export class UsersController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-    return this.usersService.update(+id, updateUserDto);
+  update(@Param('id') id: string, @Body() newUser: UpdateUserDto) {
+    return this.usersService.update(+id, newUser);
   }
 
   @Delete(':id')

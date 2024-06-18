@@ -3,7 +3,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 @Entity({ name: 'user' })
 export class User {
 
-    @PrimaryGeneratedColumn({type: 'int'})
+    @PrimaryGeneratedColumn({ type: 'int' })
     id: number;
 
     @Column({ type: 'varchar'})
@@ -11,4 +11,6 @@ export class User {
 
     @Column({ type: 'varchar'})
     password: string;
+
+    
 }
